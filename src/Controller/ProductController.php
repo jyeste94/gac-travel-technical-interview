@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Product;
+use App\Form\ProductStockType;
 use App\Form\ProductType;
 use App\Repository\ProductRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -10,6 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
+
 
 #[Route('/product')]
 class ProductController extends AbstractController
@@ -95,4 +97,39 @@ class ProductController extends AbstractController
 
         return $this->redirectToRoute('app_product_index', [], Response::HTTP_SEE_OTHER);
     }
+
+    /**
+     * @Route("/{id}/edit-stock", name="product_edit_stock", methods={"GET", "POST"})
+     */
+    public function editStock(Request $request, Product $product): Response
+    {
+        $form = $this->createForm(ProductStockType::class);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $stockChange = $form->get('stock')->getData();
+
+            // Si la cantidad es negativa y la magnitud es mayor que el stock actual, no permitir la operación
+            if ($stockChange < 0 && abs($stockChange) > $product->getStock()) {
+                $this->addFlash('error', 'No puedes eliminar más stock del existente.');
+            } else {
+                // Aplicar el cambio de stock
+                $product->setStock($product->getStock() + $stockChange);
+
+                $entityManager = $this->getDoctrine()->getManager();
+                $entityManager->flush();
+
+                $this->addFlash('success', 'El stock del producto ha sido actualizado.');
+            }
+
+            return $this->redirectToRoute('app_product_index'); // Reemplaza con la ruta real a tu lista de productos
+        }
+
+        // Renderizar el formulario si no se ha enviado o si hay errores
+        return $this->render('product/edit_stock.html.twig', [
+            'product' => $product,
+            'form' => $form->createView(),
+        ]);
+    }
+
 }
