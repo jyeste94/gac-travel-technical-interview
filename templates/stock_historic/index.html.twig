@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Historial de Stock{% endblock %}
+
+{% block body %}
+    <h1>Historial de Stock</h1>
+    <table>
+        <thead>
+        <tr>
+            <th>Producto</th>
+            <th>Cambio en Stock</th>
+            <th>Fecha</th>
+
+        </tr>
+        </thead>
+        <tbody>
+
+
+        {% for stockHistoric in stock_historics %}
+
+            <tr>
+                <td>{{ stockHistoric.ProductId.name }}</td>
+                <td>{{ stockHistoric.stock }}</td>
+                <td>{{ stockHistoric.createdAt|date('Y-m-d H:i:s') }}</td>
+
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

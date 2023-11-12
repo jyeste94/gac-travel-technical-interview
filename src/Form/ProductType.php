@@ -13,8 +13,6 @@ class ProductType extends AbstractType
     {
         $builder
             ->add('name')
-            ->add('created_at')
-            ->add('stock')
             ->add('category_id')
         ;
     }

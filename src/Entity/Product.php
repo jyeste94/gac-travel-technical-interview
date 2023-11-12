@@ -10,6 +10,15 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Product
 {
+
+
+    public function __construct()
+    {
+        $this->created_at = new \DateTimeImmutable();
+
+    }
+
+
     /**
      * @ORM\Id
      * @ORM\GeneratedValue

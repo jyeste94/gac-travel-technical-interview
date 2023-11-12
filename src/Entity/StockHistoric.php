@@ -50,21 +50,21 @@ class StockHistoric
         return $this->user_id;
     }
 
-    public function setUserId(int $user_id): self
+    public function setUserId(User $user): self
     {
-        $this->user_id = $user_id;
+        $this->user_id = $user;
 
         return $this;
     }
 
-    public function getProductId(): ?int
+    public function getProductId(): ?Product
     {
         return $this->product_id;
     }
 
-    public function setProductId(int $product_id): self
+    public function setProductId(Product $product): self
     {
-        $this->product_id = $product_id;
+        $this->product_id = $product;
 
         return $this;
     }
@@ -92,4 +92,9 @@ class StockHistoric
 
         return $this;
     }
+    public function getProduct(): ?Product
+    {
+        return $this->product;
+    }
+
 }
