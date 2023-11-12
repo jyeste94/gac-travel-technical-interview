@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Historial de Stock del Producto{% endblock %}
+
+{% block body %}
+    <h1>Historial de Stock: {{ product.name }}</h1>
+
+    <table>
+        <thead>
+        <tr>
+            <th>Fecha</th>
+            <th>Cambio en Stock</th>
+            <!-- Otros campos que desees mostrar -->
+        </tr>
+        </thead>
+        <tbody>
+        {% for stockHistoric in stockHistorics %}
+            <tr>
+                <td>{{ stockHistoric.createdAt|date('Y-m-d H:i:s') }}</td>
+                <td>{{ stockHistoric.stock }}</td>
+                <!-- Otros campos -->
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_product_index') }}">Volver</a>
+{% endblock %}

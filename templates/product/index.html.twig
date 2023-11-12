@@ -43,7 +43,7 @@
                                     <a class="badge bg-success" data-toggle="tooltip" data-placement="top" title="" data-original-title="Añadir stock" href="{{ path('product_edit_stock', {'id': product.id}) }}">
                                         <i class="las la-plus"></i>
                                     </a>
-                                    <a class="badge bg-success" data-toggle="tooltip" data-placement="top" title="" data-original-title="Histórico" href="{{ path('stock_historic_index', {'id': product.id}) }}">
+                                    <a class="badge bg-success" data-toggle="tooltip" data-placement="top" title="" data-original-title="Histórico" href="{{ path('product_stock_historic', {'id': product.id}) }}">
                                         <i class="las la-history"></i>
                                     </a>
                                     <a class="badge bg-warning" data-toggle="tooltip" data-placement="top" title="" data-original-title="Editar" href="{{ path('app_product_edit', {'id': product.id}) }}">
@@ -67,37 +67,6 @@
     </div>
 
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Created_at</th>
-                <th>Stock</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for product in products %}
-            <tr>
-                <td>{{ product.id }}</td>
-                <td>{{ product.name }}</td>
-                <td>{{ product.createdAt ? product.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ product.stock }}</td>
-                <td>
-                    <a href="{{ path('app_product_show', {'id': product.id}) }}">ver</a>
-                    <a href="{{ path('app_product_edit', {'id': product.id}) }}">editar</a>
-                    <a href="{{ path('product_edit_stock', {'id': product.id}) }}" class="btn btn-primary">Modificar stock</a>
-                    <a href="{{ path('stock_historic_index', {'id': product.id}) }}" class="btn btn-primary">Ver historico stock</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="5">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
 
     <a href="{{ path('app_product_new') }}">Create new</a>
 {% endblock %}
