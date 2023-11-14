@@ -55,7 +55,7 @@ class LoginFormAuthenticator extends AbstractLoginFormAuthenticator
 //        throw new \Exception('TODO: provide a valid redirect inside '.__FILE__);
 
         if ($token->getUser()->isAdmin()) {
-            return new RedirectResponse("/product");
+            return new RedirectResponse("/");
         }
 
         // Redirigir al usuario a la página de inicio si no es admin

@@ -10,6 +10,20 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Category
 {
+
+
+    public function __construct()
+    {
+        $this->created_at = new \DateTimeImmutable();
+    }
+
+
+    public function __toString(): string
+    {
+        return $this->name;
+    }
+
+
     /**
      * @ORM\Id
      * @ORM\GeneratedValue

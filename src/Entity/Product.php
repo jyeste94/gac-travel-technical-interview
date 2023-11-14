@@ -64,12 +64,17 @@ class Product
         return $this;
     }
 
-    public function getCategoryId(): ?int
+    public function getCategory_Id(): ?Category
     {
         return $this->category_id;
     }
 
-    public function setCategoryId(int $category_id): self
+    public function getCategoryId(): ?Category
+    {
+        return $this->category_id;
+    }
+
+    public function setCategoryId(Category $category_id): self
     {
         $this->category_id = $category_id;
 
@@ -99,4 +104,20 @@ class Product
 
         return $this;
     }
+
+
+//    /**
+//     * @ORM\PreUpdate
+//     */
+//    public function onPreUpdate()
+//    {
+//        $stockHistoric = new StockHistoric();
+//        $stockHistoric->setProductId($product);
+//        $stockHistoric->setStock($stockChange);
+//        $stockHistoric->setCreatedAt(new \DateTimeImmutable());
+//        $stockHistoric->setUserid($this->getUser());
+//
+//        $entityManager->persist($stockHistoric);
+//    }
+
 }

@@ -1,4 +1,23 @@
 {{ form_start(form) }}
+
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            {{ form_label(form.username, 'Username *', {'label_attr': {'class': 'control-label'}}) }}
+            {{ form_widget(form.username, {'attr': {'class': 'form-control'}}) }}
+            {{ form_errors(form.username) }}
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            {{ form_label(form.password, 'Contraseña *', {'label_attr': {'class': 'control-label'}}) }}
+            {{ form_widget(form.password, {'attr': {'class': 'form-control'}}) }}
+            {{ form_errors(form.password) }}
+        </div>
+    </div>
+</div>
+
     {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+    <button type="submit" class="btn btn-primary mr-2">{{ button_label|default('Guardar') }}</button>
 {{ form_end(form) }}

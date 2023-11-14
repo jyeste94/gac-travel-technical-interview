@@ -30,11 +30,15 @@
                         </thead>
 
                         <tbody>
+
+
                         {% for product in products %}
+
+
                             <tr>
                                 <td class="text-left">{{ product.name }}</td>
                                 <td class="text-left">{{ product.id }}</td>
-                                <td class="text-left">TODO CATEGORIAS</td>
+                                <td class="text-left">{% if product.category_id %} {{ product.category_id.name }} {% else %} No hay categoría asignada {% endif %}</td>
                                 <td class="text-center">{{ product.stock }}</td>
                                 <td class="text-right">
                                     <a class="badge bg-danger" data-toggle="tooltip" data-placement="top" title="" data-original-title="Eliminar stock" href="{{ path('product_edit_stock', {'id': product.id}) }}">
@@ -60,8 +64,6 @@
                     </table>
                 </div>
             </div>
-
-
         </div>
     </div>
     </div>

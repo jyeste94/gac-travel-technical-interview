@@ -12,6 +12,14 @@ use Symfony\Component\Security\Core\User\UserInterface;
  */
 class User implements UserInterface
 {
+
+    public function __construct()
+    {
+        $this->active = true;
+        $this->created_at = new \DateTimeImmutable();
+        $this->roles = ['ROLE_ADMIN'];
+    }
+
     /**
      * @ORM\Id
      * @ORM\GeneratedValue

@@ -10,6 +10,14 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class StockHistoric
 {
+
+    public function __construct()
+    {
+        $this->created_at = new \DateTimeImmutable();
+
+    }
+
+
     /**
      * @ORM\Id
      * @ORM\GeneratedValue

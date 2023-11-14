@@ -37,8 +37,6 @@ class SecurityController extends AbstractController
      */
     public function logout()
     {
-        // El controlador solo será útil para mostrar una excepción si alguien intenta acceder a la ruta /logout directamente,
-        // ya que Symfony maneja el cierre de sesión automáticamente.
         throw new \Exception('This method can be blank - it will be intercepted by the logout key on your firewall');
     }
 }

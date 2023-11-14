@@ -1,4 +1,18 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            {{ form_label(form.name, 'Nombre *', {'label_attr': {'class': 'control-label'}}) }}
+            {{ form_widget(form.name, {'attr': {'class': 'form-control'}}) }}
+            {{ form_errors(form.name) }}
+        </div>
+    </div>
+</div>
+
+<div class="col-md-12 mt-5 text-center">
+    <button type="submit" class="btn btn-primary mr-2">Enviar</button>
+</div>
+
+
 {{ form_end(form) }}

@@ -3,26 +3,48 @@
 {% block title %}Historial de Stock del Producto{% endblock %}
 
 {% block body %}
-    <h1>Historial de Stock: {{ product.name }}</h1>
+    <div class="content-page">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="d-flex flex-wrap flex-wrap align-items-center justify-content-between mb-4">
+                        <div>
+                            <h4 class="mb-3">Stock Historic</h4>
+                        </div>
+                    </div>
+                </div>
 
-    <table>
-        <thead>
-        <tr>
-            <th>Fecha</th>
-            <th>Cambio en Stock</th>
-            <!-- Otros campos que desees mostrar -->
-        </tr>
-        </thead>
-        <tbody>
-        {% for stockHistoric in stockHistorics %}
-            <tr>
-                <td>{{ stockHistoric.createdAt|date('Y-m-d H:i:s') }}</td>
-                <td>{{ stockHistoric.stock }}</td>
-                <!-- Otros campos -->
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+                <div class="col-lg-12">
+                    <div class="table-responsive mb-3">
+                        <table class="table mb-0 tbl-server-info no-footer" role="grid">
+                            <thead class="bg-white text-uppercase">
+                                <tr class="ligth ligth-data" role="row">
+                                    <th class="text-left">Name</th>
+                                    <th class="text-left">Fecha</th>
+                                    <th class="text-left">Cambio en Stock</th>
+                                </tr>
+                            </thead>
 
-    <a href="{{ path('app_product_index') }}">Volver</a>
+                            <tbody>
+                            {% for stockHistoric in stockHistorics %}
+                                <tr>
+                                    <td>{{ product.name }}</td>
+                                    <td>{{ stockHistoric.createdAt|date('Y-m-d H:i:s') }}</td>
+                                    <td>{{ stockHistoric.stock }}</td>
+                                </tr>
+                            {% else %}
+                                <tr>
+                                    <td colspan="5">Sin registros</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                        <a href="{{ path('app_product_index') }}">Volver</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
 {% endblock %}
