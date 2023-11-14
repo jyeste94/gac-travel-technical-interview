@@ -1,8 +1,3 @@
-# Jose Yeste
-- Faltan cosas que voy subiendo, cualquier duda me puedes comentar. 
-
-
-
 # Descripción de la prueba técnica
 Desarrollar una aplicación que gestione el stock de una serie de productos. La aplicación permitirá:
 - Listar, crear y modificar usuarios.
